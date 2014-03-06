@@ -256,8 +256,8 @@
         
         if ([self.title respondsToSelector:@selector(drawInRect:withAttributes:)]) {
             NSMutableParagraphStyle *titleParagraphStyle = [[NSMutableParagraphStyle alloc] init];
-            [titleParagraphStyle setAlignment:self.titleAlignment];
-            [titleParagraphStyle setLineBreakMode:NSLineBreakByClipping];
+            titleParagraphStyle.alignment = self.titleAlignment;
+            titleParagraphStyle.lineBreakMode = NSLineBreakByClipping;
             
             [self.title drawInRect:titleFrame
                     withAttributes:@{
@@ -291,7 +291,7 @@
             
             if ([self.title respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
                 NSMutableParagraphStyle *titleParagraphStyle = [[NSMutableParagraphStyle alloc] init];
-                [titleParagraphStyle setLineBreakMode:NSLineBreakByClipping];
+                titleParagraphStyle.lineBreakMode = NSLineBreakByClipping;
 
                 textFrame.origin.y += [self.title boundingRectWithSize:CGSizeMake(textFrame.size.width, 99999.0)
                                                                options:kNilOptions
@@ -316,8 +316,8 @@
         }
         
         NSMutableParagraphStyle *textParagraphStyle = [[NSMutableParagraphStyle alloc] init];
-        [textParagraphStyle setAlignment:self.textAlignment];
-        [textParagraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
+        textParagraphStyle.alignment = self.textAlignment;
+        textParagraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
         
         if ([self.message respondsToSelector:@selector(drawWithRect:options:attributes:context:)]) {
             [self.message drawWithRect:textFrame
@@ -398,8 +398,8 @@
     if (self.message!=nil) {
         if ([self.message respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
             NSMutableParagraphStyle *textParagraphStyle = [[NSMutableParagraphStyle alloc] init];
-            [textParagraphStyle setAlignment:self.textAlignment];
-            [textParagraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
+            textParagraphStyle.alignment = self.textAlignment;
+            textParagraphStyle.lineBreakMode  =NSLineBreakByWordWrapping;
 
             textSize = [self.message boundingRectWithSize:CGSizeMake(rectWidth, 99999.0)
                                                   options:NSStringDrawingUsesLineFragmentOrigin
@@ -428,7 +428,7 @@
     if (self.title != nil) {
         if ([self.title respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
             NSMutableParagraphStyle *titleParagraphStyle = [[NSMutableParagraphStyle alloc] init];
-            [titleParagraphStyle setLineBreakMode:NSLineBreakByClipping];
+            titleParagraphStyle.lineBreakMode = NSLineBreakByClipping;
 
             textSize.height += [self.title boundingRectWithSize:CGSizeMake(rectWidth, 99999.0)
                                                         options:kNilOptions
